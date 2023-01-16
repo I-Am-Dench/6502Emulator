@@ -46,10 +46,6 @@ Byte get_mem(Word address, Byte data, bool is_read) {
     }
 }
 
-void print_mem_address(Word address) {
-    printf("\nMEMORY[0x%04x] = 0x%02x\n", address, MEMORY[address]);
-}
-
 int main(int argc, char *argv[]) {
     MEMORY = create_memory();
     CPU *cpu = cpu_create(get_mem);
