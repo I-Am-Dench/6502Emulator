@@ -13,6 +13,7 @@ debug: archive
 
 test_%: archive
 test_%: $(CPU_OUT) test_%.o
+	mkdir -p $(BIN)
 	$(CC) $(FLAGS) -o $(BIN)/$@ $^ -L$(BIN) -l:cpu_6502.a
 	make --no-print-directory clean
 	clear
@@ -22,6 +23,7 @@ release: FLAGS += -O2
 release: archive
 
 archive: cpu.o alu.o opcodes.o
+	mkdir -p $(BIN)
 	ar rcs $(CPU_OUT) $^
 	make --no-print-directory clean
 
