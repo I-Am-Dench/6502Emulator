@@ -4,8 +4,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "control/controls.h"
-
 typedef uint8_t Byte;
 typedef uint16_t Word;
 
@@ -30,8 +28,6 @@ typedef uint16_t Word;
 #define INTERRUPT_IRQ   1 << 3
 
 #define MAX_MEM_SIZE 65536
-
-extern ControlWord OPCODES[MAX_OPCODES][CONTROLS_PER_OPCODE];
 
 typedef struct _cpu CPU;
 

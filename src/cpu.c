@@ -4,6 +4,7 @@
 
 #include "cpu.h"
 #include "alu.h"
+#include "control/controls.h"
 
 #define PARSE_BITS(word, n) word & ((0x01 << n) - 1); word >>= n
 
@@ -32,6 +33,8 @@
 #else
 #define DLOG(format, ...)
 #endif
+
+extern ControlWord OPCODES[MAX_OPCODES][CONTROLS_PER_OPCODE];
 
 typedef struct _cpu {
     Byte interrupt_latch;
