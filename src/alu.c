@@ -1,4 +1,7 @@
 #include "alu.h"
+
+#include "control/controls.h"
+
 #include <stdio.h>
 
 /*
