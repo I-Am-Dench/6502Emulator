@@ -6,7 +6,6 @@ CPU_OUT=$(BIN)/cpu_6502.a
 .PHONY: clean archive
 
 all: release
-	clear
 
 debug: FLAGS += -DCPU_DEBUG
 debug: archive
