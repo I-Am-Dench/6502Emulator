@@ -235,6 +235,8 @@ Byte cpu_interrupt_constant(CPU *cpu) {
     if (cpu->interrupt_latch & INTERRUPT_IRQ) {
         return 0xfe;
     }
+
+    return 0x00;
 }
 
 Word select_ad(CPU *cpu, Byte control) {
@@ -551,10 +553,11 @@ void cpu_pulse(CPU *cpu) {
     cpu_print_registers(cpu);
     #endif
 
+    Byte sign_bit;
     // == NEXT
     switch (ctrl.NX & 0x0f) {
         case NX_MX__EXIT_CC:
-            Byte sign_bit = (cpu->alu.B >> 7) & 0x01;
+            sign_bit = (cpu->alu.B >> 7) & 0x01;
             if (sign_bit ^ (alu_flags & 0x01)) {
                 cpu->mi_sw |= MI_SW__BRANCH_EXIT;
                 DLOG("BRANCH DID NOT CROSS PAGE BOUNDARY\n");
