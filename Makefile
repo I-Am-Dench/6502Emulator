@@ -1,7 +1,7 @@
 CC=gcc
 FLAGS=
 BIN=bin
-CPU_OUT=$(BIN)/cpu_6502.a
+CPU_OUT=$(BIN)/libcpu_6502.a
 
 .PHONY: clean archive
 
@@ -13,7 +13,7 @@ debug: archive
 test_%: archive
 test_%: $(CPU_OUT) test_%.o
 	mkdir -p $(BIN)
-	$(CC) $(FLAGS) -o $(BIN)/$@ $^ -L$(BIN) -l:cpu_6502.a
+	$(CC) $(FLAGS) -o $(BIN)/$@ $^ -L$(BIN) -lcpu_6502
 	make --no-print-directory clean
 	clear
 	./$(BIN)/$@

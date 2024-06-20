@@ -18,7 +18,7 @@ There are 3 main recipes to be aware of when building the project:
 
 ### **archive**
 
-The `archive` recipe will compile the C source files in the `./src` and `./src/control` directories and compiles them into an archive using `ar rcs {ARCHIVE_OUT} {OBJECT_FILES}`. The output archive to placed into `./bin/cpu_6502.a`.
+The `archive` recipe will compile the C source files in the `./src` and `./src/control` directories and compiles them into an archive using `ar rcs {ARCHIVE_OUT} {OBJECT_FILES}`. The output archive to placed into `./bin/libcpu_6502.a`.
 
 ### **release**
 
@@ -28,13 +28,13 @@ The `release` recipe will run `archive`, but will compile the object files with 
 
 The `debug` recipe will run `archive`, but will compile the object files with the -DCPU_DEBUG option. The debug archive will log debug statements for each step in the pipeline, i.e. every step that occurs in the `cpu_pulse` function, and the cycle number in the `cpu_run` function.
 
-> Please note that the generated archive is always named `cpu_6502.a` regardless of the recipe used
+> The generated archive is always named `libcpu_6502.a` regardless of the recipe used.
 
 ---
 
 ## Compiling in Projects
 
-Because the archive's name is not prefixed with `lib`, the archive should be added to the build options as `-l:cpu_6502.a` instead of `-lcpu_6502`. However, if you want to rename it to `libcpu_6502.a`, that is up to you.
+To include the library within your projects, include `-lcpu_6502` within your build options.
 
 
 ## Including
